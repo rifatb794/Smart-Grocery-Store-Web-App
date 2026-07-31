@@ -1,0 +1,105 @@
+﻿@model List<Smart_Grocery_Store_Web_App.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Cart";
+    decimal grandTotal = Model.Sum(x => x.Total);
+}
+
+<h3 class="mb-4 text-white">Your Cart</h3>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">Cart is empty</div>
+}
+else
+{
+    <table class="table table-dark table-bordered align-middle">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th width="160">Quantity</th>
+                <th>Total</th>
+                <th width="80"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr data-id="@item.ProductId">
+                    <td>@item.Name</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-secondary btn-minus">−</button>
+                        <span class="mx-2 qty">@item.Quantity</span>
+                        <button type="button" class="btn btn-sm btn-secondary btn-plus">+</button>
+                    </td>
+                    <td class="item-total">@item.Total ৳</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm btn-remove">✖</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-end text-white fs-5 mb-3">
+        <strong>Grand Total:</strong> @grandTotal ৳
+    </div>
+
+    <!-- 🔥 PLACE ORDER (THIS ENABLES LIVE TRACKING) -->
+    <form method="post" action="/Order/Place" class="text-end">
+        <button class="btn btn-lg btn-success">
+            Place Order
+        </button>
+    </form>
+}
+
+<!-- ========================= -->
+<!-- JAVASCRIPT (KEEP EXISTING) -->
+<!-- ========================= -->
+<script>
+    document.querySelectorAll('.btn-plus').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const row = this.closest('tr');
+            const id = row.dataset.id;
+            const qtySpan = row.querySelector('.qty');
+            let qty = parseInt(qtySpan.innerText) + 1;
+
+            fetch('/Cart/UpdateQty', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `id=${id}&qty=${qty}`
+            })
+            .then(() => location.reload());
+        });
+    });
+
+    document.querySelectorAll('.btn-minus').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const row = this.closest('tr');
+            const id = row.dataset.id;
+            const qtySpan = row.querySelector('.qty');
+            let qty = parseInt(qtySpan.innerText) - 1;
+
+            fetch('/Cart/UpdateQty', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `id=${id}&qty=${qty}`
+            })
+            .then(() => location.reload());
+        });
+    });
+
+    document.querySelectorAll('.btn-remove').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const row = this.closest('tr');
+            const id = row.dataset.id;
+
+            fetch('/Cart/Remove', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `id=${id}`
+            })
+            .then(() => location.reload());
+        });
+    });
+</script>

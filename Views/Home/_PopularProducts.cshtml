@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Smart_Grocery_Store_Web_App.Models.Product>
+
+@if (Model != null && Model.Any())
+{
+    <h3 class="mt-5 mb-3 text-warning">⭐ Popular Products</h3>
+
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="product-card p-3 text-center">
+                    <img src="@p.ImageUrl" class="img-fluid mb-3" />
+
+                    <h6 class="mb-1">@p.Name</h6>
+                    <div class="price">@p.Price ৳</div>
+
+                    <a href="/Product/Details/@p.Id" class="btn btn-outline-light w-100 mt-2">
+                        View
+                    </a>
+
+                    <!-- ✅ Add to cart -->
+                    <button class="btn btn-success w-100 mt-2 btn-add-cart"
+                            data-id="@p.Id">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+}

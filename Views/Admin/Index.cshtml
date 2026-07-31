@@ -1,0 +1,58 @@
+﻿@model Tuple<
+List<Smart_Grocery_Store_Web_App.Models.Order>,
+    List < Smart_Grocery_Store_Web_App.Models.Product >
+>
+
+<h2>Admin Dashboard</h2>
+
+<!-- ================= ORDERS ================= -->
+<h4>Orders</h4>
+
+<table class="table table-bordered mb-5">
+    <tr>
+        <th>Order</th>
+        <th>Customer</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var o in Model.Item1)
+    {
+        <tr>
+            <td>#@o.Id</td>
+            <td>@o.CustomerName</td>
+            <td>@o.Status</td>
+            <td>
+                <a href="/Admin/UpdateStatus/@o.Id?status=Packed">Packed</a> |
+                <a href="/Admin/UpdateStatus/@o.Id?status=Shipped">Shipped</a> |
+                <a href="/Admin/UpdateStatus/@o.Id?status=Delivered">Delivered</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- ================= PRODUCTS ================= -->
+<h4>Products</h4>
+
+<a href="/Admin/Create" class="btn btn-primary mb-3">Add Product</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var p in Model.Item2)
+    {
+        <tr>
+            <td>@p.Name</td>
+            <td>@p.Price</td>
+            <td>
+                <a href="/Admin/Edit/@p.Id" class="btn btn-warning btn-sm">Edit</a>
+                <a href="/Admin/Delete/@p.Id" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

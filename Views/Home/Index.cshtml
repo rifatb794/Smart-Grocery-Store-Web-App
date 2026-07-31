@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Smart_Grocery_Store_Web_App.Models.Offer>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- ================= HERO + SEARCH ================= -->
+<div class="hero-box mb-5 position-relative">
+
+    <h1>Welcome to Smart Grocery Store</h1>
+    <p class="opacity-75">
+        Premium Shwapno Style Online Grocery Shopping
+    </p>
+
+    <!-- 🔍 SEARCH BOX -->
+    <div class="position-relative w-100 mt-4">
+
+        <input id="searchBox"
+               type="text"
+               class="form-control form-control-lg search-input"
+               placeholder="Search products..."
+               autocomplete="off" />
+
+        <ul id="suggestions"
+            class="list-group position-absolute w-100 search-suggest"
+            style="z-index:9999; top:100%; left:0;">
+        </ul>
+
+    </div>
+</div>
+
+<!-- ================= ACTIVE OFFERS ================= -->
+@await Html.PartialAsync("_ActiveOffers", Model)
+
+<!-- ================= POPULAR PRODUCTS ================= -->
+@await Html.PartialAsync(
+"_PopularProducts",
+    Smart_Grocery_Store_Web_App.Models.FakeDb.Products
+        .Where(p => p.IsPopular)
+        .Take(4)
+        .ToList()
+)

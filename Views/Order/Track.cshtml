@@ -1,0 +1,65 @@
+﻿@model Smart_Grocery_Store_Web_App.Models.Order
+
+@{
+    ViewData["Title"] = "Order Tracking";
+}
+
+<div class="container mt-5 text-white">
+
+    <h2 class="mb-4">Order Tracking</h2>
+
+    <div class="card bg-dark text-white p-4 mb-4">
+        <h5>
+            <strong>Order ID:</strong>
+            <span class="text-warning">#@Model.Id</span>
+        </h5>
+
+        <h6 class="mt-2">
+            <strong>Customer:</strong>
+            @Model.CustomerName
+        </h6>
+    </div>
+
+    <div class="card bg-dark text-white p-4">
+        <h4>
+            Current Status:
+            <span id="orderStatus" class="badge bg-warning text-dark fs-6">
+                @Model.Status
+            </span>
+        </h4>
+    </div>
+
+    <a class="btn btn-outline-success mt-4"
+       href="/Order/Invoice/@Model.Id">
+        Download Invoice (PDF)
+    </a>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function loadStatus() {
+        $.get("/Order/GetStatus", { id: @Model.Id }, function (res) {
+            if (res.found) {
+                $("#orderStatus").text(res.status);
+
+                if (res.status === "Delivered") {
+                    $("#orderStatus").removeClass().addClass("badge bg-success fs-6");
+                }
+                else if (res.status === "Shipped") {
+                    $("#orderStatus").removeClass().addClass("badge bg-primary fs-6");
+                }
+                else if (res.status === "Packed") {
+                    $("#orderStatus").removeClass().addClass("badge bg-info text-dark fs-6");
+                }
+                else {
+                    $("#orderStatus").removeClass().addClass("badge bg-warning text-dark fs-6");
+                }
+            }
+        });
+    }
+
+    loadStatus();
+    setInterval(loadStatus, 3000);
+</script>

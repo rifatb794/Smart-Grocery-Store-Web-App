@@ -1,0 +1,30 @@
+﻿@model List<Smart_Grocery_Store_Web_App.Models.Order>
+
+<h2 class="fw-bold mb-3">Admin – Orders</h2>
+
+<table class="table table-bordered">
+    <thead class="table-success">
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    @foreach (var o in Model)
+    {
+        <tr>
+            <td>#@o.Id</td>
+            <td>@o.CustomerName</td>
+            <td>@o.GrandTotal ৳</td>
+            <td>@o.Status</td>
+            <td>
+                <a href="/Admin/UpdateStatus?id=@o.Id&status=Packed" class="btn btn-sm btn-warning">Packed</a>
+                <a href="/Admin/UpdateStatus?id=@o.Id&status=Shipped" class="btn btn-sm btn-info">Shipped</a>
+                <a href="/Admin/UpdateStatus?id=@o.Id&status=Delivered" class="btn btn-sm btn-success">Delivered</a>
+            </td>
+        </tr>
+    }
+</table>

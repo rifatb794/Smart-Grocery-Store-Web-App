@@ -1,0 +1,39 @@
+﻿@model List<Smart_Grocery_Store_Web_App.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h2 class="mb-4">Checkout</h2>
+
+<table class="table cart-table text-white">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price ৳</td>
+                <td>@item.Quantity</td>
+                <td>@item.Total ৳</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="summary-box mt-4">
+    <h4>Grand Total: @Model.Sum(x => x.Total) ৳</h4>
+
+    <form method="post" action="/Order/Place">
+        <button class="btn btn-success mt-3">
+            Place Order
+        </button>
+    </form>
+</div>

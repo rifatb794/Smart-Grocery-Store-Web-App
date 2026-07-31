@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Smart_Grocery_Store_Web_App.Models.Offer>
+
+@if (Model != null && Model.Any())
+{
+    <div class="mb-5">
+        <h4 class="text-warning mb-3">🔥 Active Offers</h4>
+
+        @foreach (var offer in Model)
+        {
+            <div class="alert alert-success fw-semibold">
+                <b>@offer.Title</b> — @offer.Description
+            </div>
+        }
+    </div>
+}

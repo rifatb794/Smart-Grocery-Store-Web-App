@@ -1,0 +1,19 @@
+﻿@model Smart_Grocery_Store_Web_App.Models.Product
+
+<h2>Edit Product</h2>
+
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <input name="Name"
+           value="@Model.Name"
+           class="form-control mb-2"
+           required />
+
+    <input name="Price"
+           value="@Model.Price"
+           class="form-control mb-2"
+           required />
+
+    <button class="btn btn-success">Update</button>
+</form>

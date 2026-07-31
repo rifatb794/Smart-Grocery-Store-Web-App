@@ -1,0 +1,30 @@
+﻿@model Smart_Grocery_Store_Web_App.Models.Product
+
+<div class="row mt-4">
+    <div class="col-md-5">
+        <img src="@Model.ImageUrl"
+             class="img-fluid rounded shadow" />
+    </div>
+
+    <div class="col-md-7 text-white">
+        <h3>@Model.Name</h3>
+
+        <h4 class="text-success">
+            @Model.Price ৳
+        </h4>
+
+        <p>Category: @Model.Category</p>
+
+        @if (Model.Stock < 5)
+        {
+            <span class="text-danger fw-bold">
+                Only @Model.Stock left!
+            </span>
+        }
+
+        <button class="btn btn-success btn-add-cart mt-3"
+                data-id="@Model.Id">
+            Add to Cart
+        </button>
+    </div>
+</div>

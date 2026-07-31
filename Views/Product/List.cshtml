@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Smart_Grocery_Store_Web_App.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="row">
+    @foreach (var p in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="product-card p-3 text-center">
+                <img src="@p.ImageUrl" class="img-fluid mb-3" />
+
+                <h6 class="mb-1">@p.Name</h6>
+                <div class="price mb-2">@p.Price ৳</div>
+
+                @if (p.Stock < 5)
+                {
+                    <div class="text-danger fw-bold mb-2">
+                        Only @p.Stock left!
+                    </div>
+                }
+                else
+                {
+                    <div class="text-success fw-semibold mb-2">
+                        In Stock
+                    </div>
+                }
+
+                <a href="/Product/Details/@p.Id" class="btn btn-success w-100 mt-2">
+                    View
+                </a>
+            </div>
+        </div>
+    }
+</div>

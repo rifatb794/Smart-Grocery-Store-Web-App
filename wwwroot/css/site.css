@@ -1,0 +1,122 @@
+﻿/* =========================
+   GLOBAL
+========================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #031b12;
+    color: #ffffff;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    background: #198754 !important;
+}
+
+    .navbar .nav-link,
+    .navbar .navbar-brand {
+        color: #ffffff !important;
+        font-weight: 500;
+    }
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero-box {
+    background: linear-gradient(135deg, #0f5132, #198754);
+    padding: 50px;
+    border-radius: 16px;
+    color: #ffffff;
+    text-align: center;
+}
+
+    .hero-box h1 {
+        font-weight: 700;
+    }
+
+.search-input {
+    border-radius: 30px;
+    padding: 12px 20px;
+}
+
+/* =========================
+   SEARCH SUGGEST
+========================= */
+.search-suggest {
+    max-height: 240px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+    .search-suggest li {
+        cursor: pointer;
+    }
+
+        .search-suggest li:hover {
+            background: #198754;
+            color: #ffffff;
+        }
+
+/* =========================
+   PRODUCT CARD
+========================= */
+.product-card {
+    background: #0b2f1c;
+    border-radius: 14px;
+    padding: 15px;
+    color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-card img {
+        border-radius: 12px;
+    }
+
+    .product-card .price {
+        font-weight: bold;
+        color: #ffc107;
+    }
+
+/* =========================
+   CART TABLE
+========================= */
+.cart-table th {
+    background: #198754;
+    color: #ffffff;
+}
+
+.cart-table td {
+    vertical-align: middle;
+}
+
+/* =========================
+   CHECKOUT / SUMMARY
+========================= */
+.checkout-box,
+.summary-box {
+    background: #0b2f1c;
+    padding: 25px;
+    border-radius: 14px;
+    color: #ffffff;
+}
+
+/* =========================
+   TOAST MESSAGE
+========================= */
+.toast-msg {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #198754;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    z-index: 9999;
+    font-weight: 500;
+    display: none;
+}
