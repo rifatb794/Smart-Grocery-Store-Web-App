@@ -9,9 +9,13 @@ Welcome to our collaborative group project! We built this application to bridge 
 ## ✨ Standout Features
 
 * **⚡ AJAX-Powered Interactivity:** The shopping cart updates instantly. Add items, change quantities, and see price calculations on the fly without refreshing the page.
+
 * **🛡️ Smart Inventory Validation:** Real-time stock checking ensures users can never order more items than what's currently available in the warehouse.
+
 * **📦 Live Order Tracking:** Customers get a transparent view of their order journey with dynamic statuses: *Processing ➔ Packed ➔ Shipped ➔ Delivered*.
+
 * **🧾 Automated PDF Invoices:** Integrated **QuestPDF** to instantly generate professional, downloadable receipts complete with VAT and dynamic discounts.
+
 * **🔐 Admin Control Panel:** A secured dashboard allowing store managers to oversee operations, perform CRUD actions on inventory, handle image uploads, and manually push order statuses.
 
 ---
@@ -45,9 +49,13 @@ The operational hub for store owners to manage product listings, track user orde
 ## 🛠️ Tech Stack & Architecture
 
 * **Backend Environment:** C#, ASP.NET Core MVC
+
 * **Frontend Design:** HTML5, CSS3, JavaScript, AJAX
+
 * **PDF Engine:** QuestPDF
+
 * **Data Serialization:** Newtonsoft.Json
+
 * **Data Storage:** In-memory Mock Database (`FakeDb`) using C# Collections (Designed for easy local testing without complex SQL configurations).
 
 ---
@@ -57,8 +65,11 @@ The operational hub for store owners to manage product listings, track user orde
 Want to explore the code or run this on your own machine? It’s incredibly straightforward:
 
 1. **Clone the repository:** Download the project files to your computer.
+
 2. **Open the Solution:** Double-click the `Smart Grocery Store Web App.sln` file to open it in **Visual Studio** (2022 recommended).
+
 3. **Run the App:** Simply hit `F5` or click the **IIS Express** play button. 
+
 4. *Note: Since we use an in-memory database, you do not need to run any Entity Framework migrations or set up SQL Server. It works straight out of the box!*
 
 ---
@@ -68,7 +79,7 @@ Want to explore the code or run this on your own machine? It’s incredibly stra
 This project was brought to life through dedicated teamwork. Connect with us:
 
 * **Rifat Bin Tayub**  
-  *Backend Developer & Project Lead* 🚀  
+  *Backend Developer* 🚀  
   Cyber Security Enthusiast | Python Learner | Exploring Ethical Hacking & Cyber Defense  
   🔗 [GitHub Profile](https://github.com/rifatb794)
 
